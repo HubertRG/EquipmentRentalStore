@@ -8,6 +8,7 @@ const reservationRoutes = require("./src/controllers/reservationController.js");
 const equipmentRoutes = require("./src/controllers/equipmentController.js");
 const authorizationRoutes = require("./src/controllers/authController.js");
 const userRoutes = require("./src/controllers/userController.js");
+const reviewRoutes = require("./src/controllers/reviewController.js");
 
 app.use(express.json());
 
@@ -17,6 +18,7 @@ app.use("/reservation", reservationRoutes);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/user", userRoutes);
 app.use("/equipment", equipmentRoutes);
+app.use("/review", reviewRoutes);
 
 app.listen(3000, () => {
   console.log("Aplikacja działa na porcie 3000");
