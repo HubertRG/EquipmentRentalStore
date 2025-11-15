@@ -52,7 +52,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET /:equipmentId * Pobranie informacji o wybranym sprzęcie, razem ze zdjęciami
+// GET /:equipmentId * Pobranie informacji o wybranym sprzęcie (informacja o tym czy sprzęt jest aktualnie wypożyczony, razem ze zdjęciami)
 router.get("/:equipmentId", async (req, res) => {
   try {
     const eq = await Equipment.findById(req.params.equipmentId).lean();
