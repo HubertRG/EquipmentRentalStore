@@ -7,13 +7,16 @@
 
 const mongoose = require("mongoose");
 
+const MONGO_URL =
+  process.env.MONGO_URL || "mongodb://localhost:27017/ProjectDB";
+
 mongoose
-  .connect("mongodb://localhost:27017/ProjectDB", { useNewUrlParser: true })
+  .connect(MONGO_URL, { useNewUrlParser: true })
   .then((result) => {
-    console.log("Połączono z bazą");
+    console.log("Połączono z bazą: " + MONGO_URL);
   })
   .catch((err) => {
-    console.log("Nie udało się połączyć z bazą danych: " + err);
+    console.log("Nie udało się połączyć z bazą danych: " + MONGO_URL + err);
   });
 
 module.exports = mongoose;

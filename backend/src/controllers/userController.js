@@ -4,7 +4,7 @@ const path = require("path");
 const router = express.Router();
 const multer = require("multer");
 const { body, validationResult } = require("express-validator");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 require("dotenv").config();
 const { User } = require("../models/User");
 const Reservation = require("../models/Reservation");
