@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const cors = require("cors");
 
 const app = express();
 
@@ -10,6 +11,13 @@ const authorizationRoutes = require("./src/controllers/authController.js");
 const userRoutes = require("./src/controllers/userController.js");
 const reviewRoutes = require("./src/controllers/reviewController.js");
 const messageRoutes = require("./src/controllers/messageController.js");
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 

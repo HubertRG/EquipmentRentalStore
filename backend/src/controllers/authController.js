@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { User, validate } = require("../models/User");
 const { body, validationResult } = require("express-validator");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const Joi = require("joi");
 require("dotenv").config();
 
