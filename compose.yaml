@@ -1,0 +1,39 @@
+version: '3.8'
+
+# Services
+services:
+  # Server service
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+    volumes:
+      - ./backend/uploads:/app/uploads
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017/ProjectDB
+
+  # Client service
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+  # Database service
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: ProjectDB
+    volumes:
+      - ./../mydata:/data/db
+
+# Volumes define
+volumes: 
+  mydata:
