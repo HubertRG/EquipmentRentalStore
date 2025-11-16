@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 /*
     Katalog sprzętu
@@ -15,6 +16,7 @@ export default function Catalog() {
         <h2 className="text-2xl font-bold mb-4 text-center bg-green-950 p-3 rounded text-white shadow m-5">
           Katalog sprzętu
         </h2>
+        <Footer />
       </div>
     </>
   );

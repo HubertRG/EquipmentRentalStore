@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 /*
     Panel administratora
@@ -14,6 +15,7 @@ export default function Admin() {
       <h2 className="text-2xl font-bold mb-4 text-center bg-green-950 p-3 rounded text-white shadow-2xl m-5">
         Panel administratora
       </h2>
+      <Footer />
     </div>
   );
 }
