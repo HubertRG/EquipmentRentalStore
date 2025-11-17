@@ -1,5 +1,6 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Universal/Navbar";
+import Footer from "../components/Universal/Footer";
 
 /*
     Strona kontaktowa
@@ -17,6 +18,7 @@ export default function Contact() {
           </h2>
         </section>
       </div>
+      <Footer />
     </div>
   );
 }

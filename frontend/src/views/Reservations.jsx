@@ -1,5 +1,6 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Universal/Navbar";
+import Footer from "../components/Universal/Footer";
 
 /*
     Strona rezerwacji
@@ -15,6 +16,7 @@ export default function Reservations() {
         <h2 className="text-2xl font-bold mb-4 text-center bg-green-950 p-3 rounded text-white shadow m-5">
           Rezerwacje
         </h2>
+        <Footer />
       </div>
     </>
   );

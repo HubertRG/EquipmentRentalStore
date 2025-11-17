@@ -1,5 +1,6 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Universal/Navbar";
+import Footer from "../components/Universal/Footer";
 
 /*
     Strona recenzji
@@ -11,6 +12,7 @@ export default function Reviews() {
   return (
     <div className=" min-h-screen bg-gray-100 dark:bg-[#242424] text-black transition-colors duration-300">
       <Navbar />
+      <Footer />
     </div>
   );
 }

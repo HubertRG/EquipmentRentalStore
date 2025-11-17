@@ -1,5 +1,6 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Universal/Navbar";
+import Footer from "../components/Universal/Footer";
 
 /*
     Panel użytkownika
@@ -15,6 +16,7 @@ export default function Profile() {
         <h1 className="text-3xl text-black dark:text-white font-bold mb-6">
           Mój profil
         </h1>
+        <Footer />
       </div>
     </>
   );

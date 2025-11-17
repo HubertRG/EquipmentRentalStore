@@ -1,5 +1,6 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Universal/Navbar";
+import Footer from "../components/Universal/Footer";
 
 /*
     Strona główna
@@ -17,6 +18,7 @@ export default function Home() {
           Wypożyczalnia Sprzętu Sportowego
         </h1>
       </section>
+      <Footer />
     </div>
   );
 }

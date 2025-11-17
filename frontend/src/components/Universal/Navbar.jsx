@@ -13,9 +13,9 @@ import { RiAdminFill } from "react-icons/ri";
 import { LuNotebookPen } from "react-icons/lu";
 import { IoMdBasket } from "react-icons/io";
 import { NavLink, useNavigate } from "react-router";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
-import "../index.css";
+import "../../index.css";
 
 /**
 Główny pasek nawigacyjny aplikacji
