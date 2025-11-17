@@ -80,6 +80,7 @@ const validate = (data) => {
       .required()
       .label("Password"),
     profilePicture: Joi.string().uri().optional().label("Profile Picture"),
+    role: Joi.string().valid("user", "admin").optional().label("Role"),
   });
   return schema.validate(data);
 };

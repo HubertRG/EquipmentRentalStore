@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 # Services
 services:
@@ -16,6 +16,7 @@ services:
       - MONGO_URL=mongodb://mongodb:27017/ProjectDB
       - JWTPRIVATEKEY=abcdefg
       - SALT=10
+      - ADMIN_CREATION_KEY=admin123!
 
   # Client service
   frontend:
@@ -37,5 +38,5 @@ services:
       - mydata:/data/db
 
 # Volumes define
-volumes: 
+volumes:
   mydata:
