@@ -14,6 +14,8 @@ services:
       - ./backend/uploads:/app/uploads
     environment:
       - MONGO_URL=mongodb://mongodb:27017/ProjectDB
+      - JWTPRIVATEKEY=abcdefg
+      - SALT=10
 
   # Client service
   frontend:
@@ -32,7 +34,7 @@ services:
     environment:
       MONGO_INITDB_DATABASE: ProjectDB
     volumes:
-      - ./../mydata:/data/db
+      - mydata:/data/db
 
 # Volumes define
 volumes: 
