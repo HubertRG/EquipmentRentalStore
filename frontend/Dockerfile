@@ -15,5 +15,5 @@ COPY . .
 # Open the port to react
 EXPOSE 5173
 
-# Run nginx in the foreground
+# Run frontend app
 CMD ["npm", "run", "dev"]

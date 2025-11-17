@@ -43,7 +43,7 @@ router.get("/", async (req, res) => {
     const equipmentWithFullUrls = equipment.map((item) => ({
       ...item._doc,
       images: item.images.map(
-        (img) => `http://localhost:3000/${img.split("/").pop()}`
+        (img) => `http://localhost:3000/uploads/${img.split("/").pop()}`
       ),
     }));
     res.json(equipmentWithFullUrls);
@@ -61,7 +61,7 @@ router.get("/:equipmentId", async (req, res) => {
     const equipmentWithFullUrls = {
       ...eq,
       images: eq.images.map(
-        (img) => `http://localhost:3000/${img.split("/").pop()}`
+        (img) => `http://localhost:3000/uploads/${img.split("/").pop()}`
       ),
     };
 

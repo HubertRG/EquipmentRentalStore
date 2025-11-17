@@ -4,7 +4,7 @@ FROM  node:22-alpine
 # Create a directory  and go to the directory 
 WORKDIR /app
 
-# Stwórz katalog uploads
+# Create directory uploads
 RUN mkdir -p uploads
 
 # Copy the package.json file to my current directory to install the necessary dependence  
