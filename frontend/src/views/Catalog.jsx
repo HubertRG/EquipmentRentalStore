@@ -4,6 +4,7 @@ import Footer from "../components/Universal/Footer";
 import AddEquipment from "../components/Equipment/AddEquipment";
 import AdminEquipmentTable from "../components/Equipment/AdminEquipmentTable";
 import { useAuth } from "../context/AuthContext";
+import EquipmentList from "../components/Equipment/EquipmentList";
 
 /*
     Equipment catalog
@@ -27,6 +28,7 @@ export default function Catalog() {
             <AdminEquipmentTable refresh={refresh} setRefresh={setRefresh} />
           </>
         )}
+        <EquipmentList refresh={refresh}/>
         <Footer />
       </div>
     </>
