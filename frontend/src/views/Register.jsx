@@ -4,8 +4,7 @@ import Footer from "../components/Universal/Footer";
 import RegisterForm from "../components/Register/RegisterForm";
 
 /*
-    Strona rejestracji
-    Umożliwia rejestrację nowego konta
+    Register page
 */
 
 export default function Register() {

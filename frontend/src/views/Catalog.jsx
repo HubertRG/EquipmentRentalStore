@@ -3,9 +3,9 @@ import Navbar from "../components/Universal/Navbar";
 import Footer from "../components/Universal/Footer";
 
 /*
-    Katalog sprzętu
-    Pokazuje sprzęt wraz z jego zdjęciami, dostępnością, ceną i kategorią
-    Na tej stronie admin ma możliwość dodania nowego sprzętu i zarządzania istniejącym
+    Equipment catalog
+    Equipment with images and filters (price per day, category, availability)
+    Add new equipment and manage existing (admin only)
 */
 
 export default function Catalog() {

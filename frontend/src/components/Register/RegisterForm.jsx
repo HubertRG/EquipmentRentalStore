@@ -11,13 +11,13 @@ import withReactContent from "sweetalert2-react-content";
 const MySwal = withReactContent(Swal);
 
 /* 
-    Komponent formularza rejestracji z walidacją po stronie klienta,
-    obsługą błędów API oraz informacją o sukcesie.
+    Register form component
+    Validates user data, handles backend errors and displays success message
 */
 
 function RegisterForm() {
     const navigate = useNavigate();
-  // Stan przechowujący wartości pól formularza
+  // Storing form fields
   const [data, setData] = useState({
     fullName: "",
     userName: "",
@@ -26,9 +26,9 @@ function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  // Stan przechowujący komunikaty błędów (walidacja + backend)
+  // Backend and validation errors
   const [errors, setErrors] = useState("");
-  // Aktualizacja pola + czyszczenie błędu powiązanego z tym polem
+  // Updates input and errors
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
     if (errors[input.name]) {
@@ -38,7 +38,6 @@ function RegisterForm() {
   const handleConfirmPasswordChange = ({ currentTarget: input }) => {
     setData((prev) => ({ ...prev, confirmPassword: input.value }));
   };
-  // Funkcja walidująca wszystkie pola formularza
   const validateForm = () => {
     const newErrors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -98,7 +97,7 @@ function RegisterForm() {
 
     return newErrors;
   };
-  // Blokuje przeładowanie strony i uruchamia walidację
+  // Handles register submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validateForm();

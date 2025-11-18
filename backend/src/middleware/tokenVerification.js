@@ -1,9 +1,5 @@
 /* 
-    Odczytuje nagłówek Authorization i weryfikuje token JWT
-    Oczekuje nagłówka: Authorization: "Bearer <token>"
-    W razie błędu:
-    - brak tokenu -> 403
-    - nieprawidłowy token -> 401
+    Reads Authorization header and verifies JWT token
 */
 
 const jwt = require("jsonwebtoken");

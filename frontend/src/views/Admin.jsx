@@ -3,9 +3,8 @@ import Navbar from "../components/Universal/Navbar";
 import Footer from "../components/Universal/Footer";
 
 /*
-    Panel administratora
-    Dostępny tylko dla użytkownika o roli admin
-    Wyświetla listę i umożliwia usuwanie wybranych użytkowników, rezerwacji, wiadomości i recenzji
+    Admin's panel
+    Manage users, messages, reviews and reservations
 */
 
 export default function Admin() {

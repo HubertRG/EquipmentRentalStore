@@ -2,9 +2,8 @@ import { IoLocationOutline } from "react-icons/io5";
 import { FaPhone } from "react-icons/fa";
 import { FaRegClock } from "react-icons/fa";
 
-/**
-    Stopka interfejsu
-    Zawiera dane kontaktowe oraz godziny otwarcia sklepu
+/*
+   Page's footer
 */
 
 export default function Footer() {

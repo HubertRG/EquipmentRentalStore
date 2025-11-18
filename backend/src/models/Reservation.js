@@ -1,10 +1,10 @@
 /*
-    Ten model:
-    - łączy użytkownika z wynajmowanym sprzętem
-    - zapisuje daty i godziny wypożyczenia oraz zwrotu
-    - obsługuje dwa typy odbioru: odbiór w sklepie lub dostawa
-    - przechowuje adres odbioru i zwrotu (jeśli dotyczy dostawy)
-    - przechowuje cenę oraz datę utworzenia rezerwacji
+    Reservation model:
+    - connect user with reserved equipment
+    - saves date and time of loan and return
+    - supports two types of collection: store and delivery
+    - address of pickup and return
+    - price and date
 */
 
 const mongoose = require("mongoose");

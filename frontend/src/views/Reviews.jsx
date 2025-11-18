@@ -3,9 +3,9 @@ import Navbar from "../components/Universal/Navbar";
 import Footer from "../components/Universal/Footer";
 
 /*
-    Strona recenzji
-    Umożliwia dodanie nowej recenzji
-    Wyświetla istniejące recenzje oraz średnią ocen z recenzji
+    Reviews page
+    User can leave new review here
+    Existing reviews are being shown with average rating
 */
 
 export default function Reviews() {

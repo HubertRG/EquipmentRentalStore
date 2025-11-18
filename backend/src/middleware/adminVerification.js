@@ -1,6 +1,6 @@
 /* 
-    Sprawdza, czy zalogowany użytkownik ma rolę "admin"
-    Najpierw uruchamia tokenVerification, a następnie wczytuje użytkownika z DB i sprawdza rolę
+    Check if current user has role "admin"
+    Use tokenVerification to verify user, then check user's role
 */
 const tokenVerification = require("./tokenVerification");
 const {User} = require("../models/User");

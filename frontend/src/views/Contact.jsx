@@ -3,8 +3,9 @@ import Navbar from "../components/Universal/Navbar";
 import Footer from "../components/Universal/Footer";
 
 /*
-    Strona kontaktowa
-    Wyświetla iframe z mapą z zaznaczoną lokalizacją sklepu oraz formularz kontaktowy służący do zadania pytania
+    Contact page
+    Map with store's location
+    Contact form
 */
 
 export default function Contact() {

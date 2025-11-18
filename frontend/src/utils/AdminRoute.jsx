@@ -2,15 +2,15 @@ import { Navigate, Outlet } from "react-router";
 import { useAuth } from "../context/AuthContext";
 
 /*
-    Działanie:
-    - Pobiera informacje o aktualnie zalogowanym użytkowniku z AuthContext.
-    - Jeśli trwa ładowanie danych (loading = true), tymczasowo nie renderuje nic,
-    - Jeśli administrator jest zalogowany — renderuje zagnieżdżone trasy (Outlet).
-    - Jeśli nie jest zalogowany — przekierowuje go na stronę logowania (/login).
-    Użycie:
-    <Route element={<AdminRoute />}>
-        <Route path="/admin" element={<Admin />} />
-    </Route>
+    Admin route protection:
+    - Fetches information about the currently logged-in user from AuthContext.
+    - If data is loading (loading = true), it temporarily renders nothing.
+    - If the administrator is logged in — it renders nested routes (Outlet).
+    - If not logged in — it redirects them to the login page (/login).
+    Use:
+    <Route element={<AdminRoute />}>
+        <Route path="/admin" element={<Admin />} />
+    </Route>
 */
 
 function AdminRoute() {

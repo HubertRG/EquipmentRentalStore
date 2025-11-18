@@ -6,23 +6,21 @@ import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 
 /*
-  Komponent formularza logowania.
-  Odpowiada za obsługę logowania użytkownika,
-  walidację danych, wysyłanie żądania do backendu,
-  obsługę błędów oraz zapis tokenu i danych użytkownika.
+  Login form component
+  Responsible for user login (validate data, send request to backend, handle errors and save token and user's data)
 */
 
 function LoginForm() {
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
-  // Aktualizuje pola formularza po wpisaniu danych przez użytkownika
+  // Update form's fields when user's input changes
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
   };
   const navigate = useNavigate();
   const { login } = useAuth();
-  // Obsługa logowania po kliknięciu przycisku "Zaloguj"
-  // Wysyła żądanie do backendu i przechowuje token użytkownika
+  // Handles login button press
+  // Sends request to backend and saves token
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

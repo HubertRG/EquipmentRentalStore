@@ -8,10 +8,10 @@ import { RiSparkling2Line } from "react-icons/ri";
 import { LuHandHelping } from "react-icons/lu";
 
 /*
-    Strona główna
-    Wyświetla ogólne informacje o sprzęcie i usługach
-    Umożliwia przejście do katalogu
-    Dla zalogowanego użytkownika przejście do rezerwacji, dla niezalogowanego do rejestracji
+    Home page
+    Displays general info about store and offered services
+    Link to equipment catalog
+    For logged in user link to reservations / For not logged in user link to register
 */
 
 export default function Home() {

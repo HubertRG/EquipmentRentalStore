@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const Joi = require("joi");
 require("dotenv").config();
 
-// POST /signup * Rejestracja nowego użytkownika (walidacja danych za pomocą express-validatora, sprawdzenie unikalności)
+// POST /signup * New user register (validation using express-validator, check for duplicates)
 router.post(
   "/signup",
   [
@@ -69,7 +69,7 @@ router.post(
   }
 );
 
-// POST /login * Uwierzytelnienie użytkownika (sprawdzenie poprawności danych, wygenerowanie tokenu)
+// POST /login * User authorization (validate data, generate token)
 router.post("/login", async (req, res) => {
   try {
     const { error } = validateLogin(req.body);

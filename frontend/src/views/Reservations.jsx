@@ -3,9 +3,9 @@ import Navbar from "../components/Universal/Navbar";
 import Footer from "../components/Universal/Footer";
 
 /*
-    Strona rezerwacji
-    Umożliwia dodanie nowej rezerwacji
-    Wyświetla listę istniejących rezerwacji dla zalogowanego użytkownika
+    Reservations page
+    User can add new reservation
+    Existing reservations for current user are shown in a table
 */
 
 export default function Reservations() {

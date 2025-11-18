@@ -3,9 +3,9 @@ import Navbar from "../components/Universal/Navbar";
 import Footer from "../components/Universal/Footer";
 
 /*
-    Panel użytkownika
-    Wyświetla informacje o aktualnie zalogowanym użytkowniku
-    Umożliwia zmianę zdjęcia profilowego, danych, hasła oraz usunięcie konta
+    User profile page
+    User can change profile picture and data (email, full name and username)
+    User can also change password and delete account
 */
 
 export default function Profile() {

@@ -10,12 +10,12 @@ import Admin from "./views/Admin.jsx";
 import Contact from "./views/Contact.jsx";
 import Profile from "./views/Profile.jsx";
 import ErrorPage from "./views/ErrorPage.jsx";
-import ProtectedRoute from "./utils/ProtectedRoute.jsx";
+import ProtectedRoute from "./utils/ProtectedRoute.jsx";powiązane
 import AdminRoute from "./utils/AdminRoute.jsx";
 
 /*
-  Główny komponent aplikacji odpowiedzialny za konfigurację routingu.
-  Ostatnia ścieżka (*) obsługuje przypadek wpisania nieistniejącego adresu (ErrorPage)
+  Main component of the application responsible for routes configuration
+  Last path (*) handles the case of entering a non-existent address (ErrorPage)
 */
 
 export default function App() {

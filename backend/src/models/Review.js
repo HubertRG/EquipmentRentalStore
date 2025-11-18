@@ -1,9 +1,9 @@
 /*
-    Przechowuje:
-    - nazwę użytkownika (fullName)
-    - ocenę liczbową 1–5
-    - opcjonalny komentarz
-    - datę wystawienia recenzji
+    Review model:
+    - user's full name
+    - rating 1–5
+    - optional comment
+    - review's submition date
 */
 
 const mongoose = require("mongoose");

@@ -12,7 +12,7 @@ const upload = require("../middleware/upload");
 const adminVerification = require("../middleware/adminVerification");
 const tokenVerification = require("../middleware/tokenVerification");
 
-// GET / * Pobiera dane zalogowanego użytkownika (bez pola password).
+// GET / * Get current user info (without password)
 router.get("/", tokenVerification, async (req, res) => {
   try {
     const u = await User.findById(req.user._id).lean().select("-password");
@@ -26,7 +26,7 @@ router.get("/", tokenVerification, async (req, res) => {
   }
 });
 
-// GET /admin * Lista użytkowników — dostęp tylko dla admina.
+// GET /admin * Get users list (admin only)
 router.get("/admin", adminVerification, async (req, res) => {
   try {
     const users = await User.find()
@@ -47,7 +47,7 @@ router.get("/admin", adminVerification, async (req, res) => {
   }
 });
 
-// DELETE / * Usunięcie własnego konta wraz z rezerwacjami użytkownika.
+// DELETE / * Delete current user (with user's reservations)
 router.delete("/", tokenVerification, async (req, res) => {
   try {
     await Reservation.deleteMany({ user: req.user._id });
@@ -67,7 +67,7 @@ router.delete("/", tokenVerification, async (req, res) => {
   }
 });
 
-// DELETE /:id * Usunięcie konta o danym ID (tylko admin).
+// DELETE /:id * Delete user with chosen id (admin only)
 router.delete("/:id", adminVerification, async (req, res) => {
   try {
     await Reservation.deleteMany({ user: req.params.id });
@@ -87,7 +87,7 @@ router.delete("/:id", adminVerification, async (req, res) => {
   }
 });
 
-// PUT /avatar * Zmiana zdjęcia profilowego. Usuwamy stare zdjęcie z dysku (jeśli nie jest domyślne).
+// PUT /avatar * Change user's profile picture
 router.put(
   "/avatar",
   tokenVerification,
@@ -106,7 +106,7 @@ router.put(
   }
 );
 
-// PUT / * Aktualizacja profilu (fullName, userName, email, phonenumber)
+// PUT / * Update profile (without password)
 router.put(
   "/",
   [
@@ -145,7 +145,7 @@ router.put(
   }
 );
 
-// PUT /password * Zmiana hasła użytkownika
+// PUT /password * Change current user's password
 router.put("/password", tokenVerification, async (req, res) => {
   const { oldPassword, newPassword, confirmPassword } = req.body;
   if (!oldPassword || !newPassword || !confirmPassword) {
