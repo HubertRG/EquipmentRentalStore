@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Universal/Navbar";
 import Footer from "../components/Universal/Footer";
+import AddReservation from "../components/Reservation/AddReservation";
 
 /*
     Reservations page
@@ -9,6 +10,7 @@ import Footer from "../components/Universal/Footer";
 */
 
 export default function Reservations() {
+  const [refresh, setRefresh] = useState(false);
   return (
     <>
       <Navbar />
@@ -16,6 +18,9 @@ export default function Reservations() {
         <h2 className="text-2xl font-bold mb-4 text-center bg-green-950 p-3 rounded text-white shadow m-5">
           Rezerwacje
         </h2>
+        <div className="container mx-auto my-8 p-6 bg-white dark:bg-green-950 rounded-lg shadow-md">
+          <AddReservation refresh={refresh} setRefresh={setRefresh} />
+        </div>
         <Footer />
       </div>
     </>
