@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../components/Universal/Navbar";
 import Footer from "../components/Universal/Footer";
 import AddReservation from "../components/Reservation/AddReservation";
+import ReservationList from "../components/Reservation/ReservationList";
 
 /*
     Reservations page
@@ -20,6 +21,7 @@ export default function Reservations() {
         </h2>
         <div className="container mx-auto my-8 p-6 bg-white dark:bg-green-950 rounded-lg shadow-md">
           <AddReservation refresh={refresh} setRefresh={setRefresh} />
+          <ReservationList refresh={refresh} setRefresh={setRefresh} />
         </div>
         <Footer />
       </div>
