@@ -10,7 +10,7 @@ import Admin from "./views/Admin.jsx";
 import Contact from "./views/Contact.jsx";
 import Profile from "./views/Profile.jsx";
 import ErrorPage from "./views/ErrorPage.jsx";
-import ProtectedRoute from "./utils/ProtectedRoute.jsx";powiązane
+import ProtectedRoute from "./utils/ProtectedRoute.jsx";
 import AdminRoute from "./utils/AdminRoute.jsx";
 
 /*
