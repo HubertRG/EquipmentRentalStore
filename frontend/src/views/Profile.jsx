@@ -7,6 +7,8 @@ import { useAuth } from "../context/AuthContext";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import ChangeAvatarForm from "../components/Profile/ChangeAvatarForm";
+import EditProfileForm from "../components/Profile/EditProfileForm";
+import PasswordChangeForm from "../components/Profile/PasswordChangeForm";
 
 const MySwal = withReactContent(Swal);
 
@@ -20,6 +22,10 @@ export default function Profile() {
   const { user, logout } = useAuth();
   const [profile, setProfile] = useState({});
   const [refresh, setRefresh] = useState(false);
+  // Show edit form state
+  const [showEditForm, setShowEditForm] = useState(false);
+  // Show change password form state
+  const [showPasswordForm, setShowPasswordForm] = useState(false);
 
   const token = localStorage.getItem("token");
 
@@ -104,6 +110,41 @@ export default function Profile() {
             </table>
             {/* Change profile picture form */}
             <ChangeAvatarForm onUpdated={() => setRefresh(!refresh)} />
+              {/* Edit user profile form / edit profile button */}
+            {showEditForm ? (
+              <EditProfileForm
+                profile={profile}
+                onUpdated={() => {
+                  setRefresh(!refresh);
+                  setShowEditForm(false);
+                }}
+                onCancel={() => setShowEditForm(false)}
+              />
+            ) : (
+              <button
+                className="w-full bg-blue-600 hover:bg-blue-700 hover:cursor-pointer text-white font-bold py-2 px-4 rounded-lg transition duration-200 mb-4"
+                onClick={() => setShowEditForm(true)}
+              >
+                Edytuj dane
+              </button>
+            )}
+            {/* Change password form / change password button */}
+            {showPasswordForm ? (
+              <PasswordChangeForm
+                onUpdated={() => {
+                  setRefresh(!refresh);
+                  setShowPasswordForm(false);
+                }}
+                onCancel={() => setShowPasswordForm(false)}
+              />
+            ) : (
+              <button
+                className="w-full bg-blue-600 hover:bg-blue-700 hover:cursor-pointer text-white font-bold py-2 px-4 rounded-lg transition duration-200 mb-4"
+                onClick={() => setShowPasswordForm(true)}
+              >
+                Zmień hasło
+              </button>
+            )}
             <button
               className="w-full bg-red-600 hover:bg-red-700 hover:cursor-pointer text-white font-bold py-2 px-4 rounded-lg transition duration-200"
               onClick={handleDelete}
