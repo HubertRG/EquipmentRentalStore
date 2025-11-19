@@ -3,6 +3,7 @@ import Navbar from "../components/Universal/Navbar";
 import Footer from "../components/Universal/Footer";
 import AdminUsersTable from "../components/Admin/AdminUsersTable";
 import AdminReservationsTable from "../components/Admin/AdminReservationsTable";
+import AdminReviewsTable from "../components/Admin/AdminReviewsTable";
 
 /*
     Admin's panel
@@ -18,6 +19,7 @@ export default function Admin() {
       </h2>
       <AdminUsersTable />
       <AdminReservationsTable />
+      <AdminReviewsTable />
       <Footer />
     </div>
   );
