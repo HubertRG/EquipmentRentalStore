@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/Universal/Navbar";
 import Footer from "../components/Universal/Footer";
 import AdminUsersTable from "../components/Admin/AdminUsersTable";
+import AdminReservationsTable from "../components/Admin/AdminReservationsTable";
 
 /*
     Admin's panel
@@ -16,6 +17,7 @@ export default function Admin() {
         Panel administratora
       </h2>
       <AdminUsersTable />
+      <AdminReservationsTable />
       <Footer />
     </div>
   );
