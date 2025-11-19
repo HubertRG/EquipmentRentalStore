@@ -59,7 +59,7 @@ export default function AdminReservationsTable() {
   return (
     <section className="mb-8 p-5">
       <h3 className="text-xl font-semibold mb-2">Rezerwacje</h3>
-      <table className="bg-white dark:text-black w-full mb-4 table-auto text-center p-5 border-1 shadow-2xl">
+      <table className="bg-white dark:text-black w-full mb-4 table-auto text-center p-5 border shadow-2xl">
         <thead className="bg-green-950 text-white ">
           <tr>
             <th className="px-2 py-1">Lp.</th>

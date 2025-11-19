@@ -4,6 +4,7 @@ import Footer from "../components/Universal/Footer";
 import AdminUsersTable from "../components/Admin/AdminUsersTable";
 import AdminReservationsTable from "../components/Admin/AdminReservationsTable";
 import AdminReviewsTable from "../components/Admin/AdminReviewsTable";
+import AdminMessagesTable from "../components/Admin/AdminMessagesTable";
 
 /*
     Admin's panel
@@ -20,6 +21,7 @@ export default function Admin() {
       <AdminUsersTable />
       <AdminReservationsTable />
       <AdminReviewsTable />
+      <AdminMessagesTable />
       <Footer />
     </div>
   );

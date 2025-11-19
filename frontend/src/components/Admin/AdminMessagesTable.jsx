@@ -6,38 +6,33 @@ import withReactContent from "sweetalert2-react-content";
 const MySwal = withReactContent(Swal);
 
 /*
-    Admin reviews table
+    Admin messages table component
 */
 
-export default function AdminReviewsTable() {
-  const [reviews, setReviews] = useState([]);
+export default function AdminMessagesTable() {
+  const [messages, setMessages] = useState([]);
   const [refresh, setRefresh] = useState(false);
 
-  // Fetch reviews and set review data
+  // Fetch messages and set messages data
   useEffect(() => {
-    const fetchReviews = async () => {
+    const fetchMessages = async () => {
       try {
-        const reviewsRes = await axios.get(
-          "http://localhost:3000/review/admin",
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-        if (!reviewsRes) console.log("Nie udało się pobrać recenzji");
-        setReviews(reviewsRes.data);
+        const messagesRes = await axios.get("http://localhost:3000/message/", {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        });
+        if (!messagesRes) console.log("Nie udało się pobrać wiadomości");
+        setMessages(messagesRes.data);
       } catch (err) {
-        console.log("Błąd przy pobieraniu recenzji: ", err);
+        console.log("Błąd przy pobieraniu wiadomości: ", err);
       }
     };
-    fetchReviews();
+    fetchMessages();
   }, [refresh]);
 
-  // Handle review delete, show confirm pop-up, refresh table after confirm
+  // Handle message delete, show confirm pop-up, refresh table when confirmed
   const handleDelete = async (id) => {
     const result = await MySwal.fire({
-      title: "Czy na pewno chcesz usunąć tę recenzję?",
+      title: "Czy na pewno chcesz usunąć tę wiadomość?",
       text: "Tej operacji nie można cofnąć",
       icon: "warning",
       showCancelButton: true,
@@ -48,20 +43,20 @@ export default function AdminReviewsTable() {
     if (result.isConfirmed) {
       try {
         const deleted = await axios.delete(
-          `http://localhost:3000/review/${id}`,
+          `http://localhost:3000/message/${id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           }
         );
-        if (!deleted) console.log("Nie udało się usunąć recenzji");
-        console.log("Usunięto recenzję");
+        if (!deleted) console.log("Nie udało się usunąć wiadomości");
+        console.log("Usunięto wiadomość");
         setRefresh(!refresh);
       } catch (err) {
-        console.log("Błąd przy usuwaniu recenzji: ", err);
+        console.log("Błąd przy usuwaniu wiadomości: ", err);
         MySwal.fire({
-          title: "Błąd przy usuwaniu recenzji",
+          title: "Błąd przy usuwaniu wiadomości",
           text: "Błąd: " + (err.response?.data?.message || err.message),
           icon: "error",
           confirmButtonText: "Ok",
@@ -72,37 +67,39 @@ export default function AdminReviewsTable() {
 
   return (
     <section className="mb-8 p-5">
-      <h3 className="text-xl font-semibold mb-2">Recenzje</h3>
+      <h3 className="text-xl font-semibold mb-2">Wiadomości</h3>
       <table className="bg-white dark:text-black w-full mb-4 table-auto text-center p-5 border shadow-2xl">
         <thead className="bg-green-950 text-white ">
           <tr>
             <th className="px-2 py-1">Lp.</th>
             <th>Imię i nazwisko</th>
-            <th>Ocena</th>
+            <th>Adres email</th>
+            <th>Temat</th>
             <th>Treść</th>
             <th>Data otrzymania</th>
             <th>-</th>
           </tr>
         </thead>
         <tbody>
-          {reviews.length === 0 ? (
+          {messages.length === 0 ? (
             <tr>
-              <td colSpan="6" className="text-xl p-2 font-bold">
-                Brak recenzji
+              <td colSpan="7" className="text-xl p-2 font-bold">
+                Brak wysłanych wiadomości
               </td>
             </tr>
           ) : (
-            reviews.map((r, i) => (
-              <tr key={r._id} className="border-b">
+            messages.map((m, i) => (
+              <tr key={m._id} className="border-b">
                 <td>{i + 1}</td>
-                <td>{r.fullName}</td>
-                <td>{r.rating}</td>
-                <td>{r.comment}</td>
-                <td>{new Date(r.createdAt).toLocaleString("pl-PL")}</td>
+                <td>{m.fullName}</td>
+                <td>{m.email}</td>
+                <td>{m.subject}</td>
+                <td>{m.content}</td>
+                <td>{new Date(m.sentAt).toLocaleString("pl-PL")}</td>
                 <td>
                   <button
                     className="rounded m-2 text-white bg-red-600 hover:bg-red-700 hover:cursor-pointer px-2 py-1"
-                    onClick={() => handleDelete(r._id)}
+                    onClick={() => handleDelete(m._id)}
                   >
                     Usuń
                   </button>
