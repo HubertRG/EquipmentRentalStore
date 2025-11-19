@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/Universal/Navbar";
 import Footer from "../components/Universal/Footer";
+import AdminUsersTable from "../components/Admin/AdminUsersTable";
 
 /*
     Admin's panel
@@ -14,6 +15,7 @@ export default function Admin() {
       <h2 className="text-2xl font-bold mb-4 text-center bg-green-950 p-3 rounded text-white shadow-2xl m-5">
         Panel administratora
       </h2>
+      <AdminUsersTable />
       <Footer />
     </div>
   );
