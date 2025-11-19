@@ -1,7 +1,7 @@
 /*
-    Ten moduł tworzy połączenie z bazą danych używając adresu:
+    This module creates a connection with the database using:
         mongodb://localhost:27017/ProjectDB
-    Przykład użycia:
+    Use example:
         const mongoose = require('./config/db');
 */
 

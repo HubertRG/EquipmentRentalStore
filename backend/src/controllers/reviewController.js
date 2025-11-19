@@ -4,7 +4,7 @@ const Review = require("../models/Review");
 const { body, validationResult } = require("express-validator");
 const adminVerification = require("../middleware/adminVerification");
 
-// POST / * Dodanie nowej recenzji (walidacja danych)
+// POST / * Add new review (data validation)
 router.post(
   "/",
   [
@@ -38,7 +38,7 @@ router.post(
   }
 );
 
-// GET / * Pobranie listy recenzji (obliczenie średniej oceny)
+// GET / * Get reviews list (with average rating)
 router.get("/", async (req, res) => {
   try {
     const reviews = await Review.find();
@@ -54,7 +54,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET /admin * Pobranie listy recenzji dla admina
+// GET /admin * Get reviews list (admin only)
 router.get("/admin", adminVerification, async (req, res) => {
   try {
     const reviews = await Review.find();
@@ -67,7 +67,7 @@ router.get("/admin", adminVerification, async (req, res) => {
   }
 });
 
-// DELETE /:id * Usunięcie recenzji o wybranym id (tylko dla admina)
+// DELETE /:id * Delete review with chosen id (admin only)
 router.delete("/:id", adminVerification, async (req, res) => {
   try {
     const review = await Review.findByIdAndDelete(req.params.id);

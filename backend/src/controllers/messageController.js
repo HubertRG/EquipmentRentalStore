@@ -4,7 +4,7 @@ const Message = require("../models/Message");
 const { body, validationResult } = require("express-validator");
 const adminVerification = require("../middleware/adminVerification");
 
-// POST / * Dodanie nowej wiadomości (walidacja danych)
+// POST / * Add new message (validate data)
 router.post(
   "/",
   [
@@ -36,7 +36,7 @@ router.post(
   }
 );
 
-// GET / * Pobranie listy wiadomości dla admina
+// GET / * Get list of messages (admin only)
 router.get("/", adminVerification, async (req, res) => {
   try {
     const messages = await Message.find();
@@ -49,7 +49,7 @@ router.get("/", adminVerification, async (req, res) => {
   }
 });
 
-// DELETE /:id * Usunięcie wiadomości o wybranym id (tylko dla admina)
+// DELETE /:id * Delete message with chosen id (admin only)
 router.delete("/:id", adminVerification, async (req, res) => {
   try {
     const message = await Message.findByIdAndDelete(req.params.id);

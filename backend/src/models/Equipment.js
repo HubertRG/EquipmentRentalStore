@@ -1,9 +1,9 @@
 /*
-    Ten model przechowuje:
-    - nazwę i kategorię sprzętu
-    - opis oraz cenę wynajmu za dzień
-    - listę obrazów (URL-e)
-    - listę rezerwacji powiązanych z tym sprzętem
+    Equipment model:
+    - name and category
+    - description and price per day
+    - images list (URLs)
+    - related reservations list
 */
 
 const mongoose = require("mongoose");

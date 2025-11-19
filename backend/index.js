@@ -4,7 +4,7 @@ const cors = require("cors");
 
 const app = express();
 
-//Importy routerów kontrolerów
+//Import routes controllers
 const reservationRoutes = require("./src/controllers/reservationController.js");
 const equipmentRoutes = require("./src/controllers/equipmentController.js");
 const authorizationRoutes = require("./src/controllers/authController.js");
@@ -21,7 +21,7 @@ app.use(
 
 app.use(express.json());
 
-//Przypisanie tras
+//Assign routes
 app.use("/authorization", authorizationRoutes);
 app.use("/reservation", reservationRoutes);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));

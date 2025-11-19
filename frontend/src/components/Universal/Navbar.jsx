@@ -17,19 +17,19 @@ import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
 import "../../index.css";
 
-/**
-Główny pasek nawigacyjny aplikacji
+/*
+Main navigation bar of the application
 
-Funkcje:
- - obsługa trybu jasnego/ciemnego (zapisywanego w localStorage),
- - wyświetlanie linków nawigacyjnych w zależności od zalogowania użytkownika,
- - panel użytkownika z dropdown menu (logowanie, rejestracja, panel admina),
- - integracja z Flowbite (dropdown + menu mobilne),
- - automatyczna weryfikacja tokenu przy zmianie stanu autoryzacji.
+Features:
+ - handling light/dark mode (saved in localStorage),
+ - displaying navigation links depending on user login status,
+ - user panel with a dropdown menu (login, registration, admin panel),
+ - integration with Flowbite (dropdown + mobile menu),
+ - automatic token verification upon authorization state change.
 */
 
 export default function Navbar() {
-  // Inicjalizacja trybu ciemnego na podstawie localStorage
+  // Dark mode initialization based on localStorage
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem("theme") === "dark";
   });
@@ -48,7 +48,7 @@ export default function Navbar() {
         : "hover:bg-gray-100 dark:hover:bg-gray-600"
     } text-gray-700 dark:text-gray-200`;
 
-  // Synchronizacja motywu z dokumentem + zapis do localStorage
+  // Synchronization of theme with the document + saving to localStorage
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -59,12 +59,12 @@ export default function Navbar() {
     }
   }, [darkMode]);
 
-  // Inicjalizacja komponentów Flowbite (dropdowns, mobile menu)
+  // Flowbite components initialization (dropdowns, mobile menu)
   useEffect(() => {
     import("flowbite").then(({ initFlowbite }) => initFlowbite());
   }, []);
 
-  // Sprawdzenie poprawności tokenu — jeśli nieaktualny, następuje automatyczne wylogowanie
+  // Token validity check — if outdated, automatic logout occurs
   useEffect(() => {
     const checkUser = async () => {
       if (!localStorage.getItem("token")) {
@@ -85,7 +85,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
 
-  // Wylogowanie + przekierowanie na stronę główną
+  // Logout + redirect to homepage
   const handleLogout = () => {
     logout();
     navigate("/");
@@ -113,9 +113,9 @@ export default function Navbar() {
                   <FaMoon className="text-gray-900 dark:text-white" />
                 )}
               </button>
-              
-              {/* Jeśli użytkownik jest zalogowany — pokaż dropdown z profilem
-                W przeciwnym razie — pokaz opcje logowania / rejestracji*/}
+
+              {/* If user is logged in — show profile dropdown
+                Otherwise — show login / registration options*/}
               {user ? (
                 <>
                   <button

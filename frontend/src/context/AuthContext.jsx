@@ -2,20 +2,20 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 
 /*
-Globalny kontekst autoryzacji użytkownika
+Global user authorization context
 
-Odpowiada za:
- - przechowywanie stanu uwierzytelnienia (token + dane użytkownika),
- - logowanie użytkownika (login),
- - wylogowywanie (logout),
- - automatyczne pobieranie danych użytkownika na podstawie tokenu,
- - przechowywanie tokenu w localStorage, aby przetrwał odświeżenie strony.
+Responsible for:
+ - storing authentication state (token + user data),
+ - user login (login),
+ - user logout (logout),
+ - automatically fetching user data based on the token,
+ - storing the token in localStorage so it persists upon page refresh.
 
-Zachowanie:
- - Przy starcie aplikacji pobiera token z localStorage i próbuje pobrać aktualne dane
-   użytkownika z backendu /user.
- - Jeśli token jest nieprawidłowy lub zapytanie zwróci błąd — automatycznie wylogowuje.
- - loading = true oznacza, że trwa walidacja lub pobieranie danych użytkownika.
+Behavior:
+ - On application startup, it retrieves the token from localStorage and attempts to
+   fetch current user data from the backend at /user.
+ - If the token is invalid or the request returns an error — it automatically logs out.
+ - loading = true means that user validation or data fetching is currently in progress.
 */
 
 const AuthContext = createContext();

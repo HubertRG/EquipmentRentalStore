@@ -1,9 +1,9 @@
 /*
-    Zawiera:
-    - imię i nazwisko nadawcy
+    Message model:
+    - sender's fullname
     - e-mail
-    - temat i treść wiadomości
-    - datę wysłania
+    - subject and content of the message
+    - message's submition date
 */
 
 const mongoose = require("mongoose");

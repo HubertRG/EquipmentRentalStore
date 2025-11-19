@@ -1,13 +1,13 @@
 /* 
-    Konfiguracja:
-    - storage: zapis plików do folderu 'uploads/'
-    - filename: unikalna nazwa z timestampem + random
-    - fileFilter: akceptujemy tylko image/jpeg, image/png, image/webp
-    - limits: maksymalny rozmiar pliku 5 MB
+    Configuration:
+    - storage: files are saved in 'uploads/'
+    - filename: unique name with timestampe + random
+    - fileFilter: accept only image/jpeg, image/png, image/webp
+    - limits: max size of 5 MB
 
-    Eksportuje instancję multer, którą używamy w route'ach:
-    - upload.single('avatar')  -> jeden plik
-    - upload.array('images')  -> wiele plików
+    Exports multer instance, which is used in routes:
+    - upload.single('avatar')  -> one file
+    - upload.array('images')  -> many files
 */
 const multer = require('multer');
 const path = require('path');

@@ -7,7 +7,7 @@ const Reservation = require("../models/Reservation");
 const adminVerification = require("../middleware/adminVerification");
 const { body, validationResult } = require("express-validator");
 
-// POST / * Dodanie nowego sprzętu (tylko dla admina, przesłanie i zapisanie ścieżek do zdjęć, weryfikacja danych)
+// POST / * Add new equipment (admin only, upload images and save image paths, validate data)
 router.post(
   "/",
   upload.array("images"),
@@ -36,14 +36,14 @@ router.post(
   }
 );
 
-// GET / * Pobranie listy sprzętu razem ze zdjęciami
+// GET / * Get equipment list with images
 router.get("/", async (req, res) => {
   try {
     const equipment = await Equipment.find();
     const equipmentWithFullUrls = equipment.map((item) => ({
       ...item._doc,
       images: item.images.map(
-        (img) => `http://localhost:3000/${img.split("/").pop()}`
+        (img) => `http://localhost:3000/uploads/${img.split("/").pop()}`
       ),
     }));
     res.json(equipmentWithFullUrls);
@@ -52,7 +52,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET /:equipmentId * Pobranie informacji o wybranym sprzęcie (informacja o tym czy sprzęt jest aktualnie wypożyczony, razem ze zdjęciami)
+// GET /:equipmentId * Get info about equipment with chosen id (is currently reserved and images)
 router.get("/:equipmentId", async (req, res) => {
   try {
     const eq = await Equipment.findById(req.params.equipmentId).lean();
@@ -61,7 +61,7 @@ router.get("/:equipmentId", async (req, res) => {
     const equipmentWithFullUrls = {
       ...eq,
       images: eq.images.map(
-        (img) => `http://localhost:3000/${img.split("/").pop()}`
+        (img) => `http://localhost:3000/uploads/${img.split("/").pop()}`
       ),
     };
 
@@ -81,7 +81,7 @@ router.get("/:equipmentId", async (req, res) => {
   }
 });
 
-// DELETE /:id * Usunięcie wybranego sprzętu (tylko dla admina, usunięcie powiązanych rezerwacji)
+// DELETE /:id * Delete chosen equipment (admin only, delete related reservations)
 router.delete("/:id", adminVerification, async (req, res) => {
   try {
     const equipId = req.params.id;
@@ -101,7 +101,7 @@ router.delete("/:id", adminVerification, async (req, res) => {
   }
 });
 
-// PUT /:id * Aktualizacja wybranego sprzętu (tylko dla admina, możliwość usunięcia starych oraz przesłania nowych zdjęć, walidacja danych)
+// PUT /:id * Upadate chosen equipment (admin only, can delete old images and upload new ones, validate data)
 router.put(
   "/:id",
   upload.array("images"),

@@ -4,8 +4,7 @@ import Footer from "../components/Universal/Footer";
 import LoginForm from "../components/Login/LoginForm";
 
 /*
-    Strona logowania
-    Umożliwia zalogowanie się aplikacji
+    Login page
 */
 
 export default function Login() {

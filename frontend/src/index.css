@@ -22,3 +22,17 @@
 button:hover {
   cursor: pointer;
 }
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.react-datepicker__day--disabled {
+  background-color: #fecaca !important;
+  color: #991b1b !important;
+  cursor: not-allowed;
+}
+
+.react-datepicker__day--selected {
+  background-color: #16a34a !important;
+}

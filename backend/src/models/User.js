@@ -3,10 +3,9 @@ const jwt = require("jsonwebtoken");
 const Joi = require("joi");
 const passwordComplexity = require("joi-password-complexity");
 
-/* Ten moduł:
-    - definiuje schemat użytkownika (pola, typy, domyślne wartości)
-    - dodaje metodę generateAuthToken(), która generuje JWT dla zalogowanego użytkownika
-    - eksportuje funkcję validate(data), która waliduje payload rejestracji / edycji użytkownika
+/* 
+  User model:
+  - full name, username, email, phone number, password, role, profile picture and date of creation
 */
 
 const userSchema = new mongoose.Schema({
@@ -33,9 +32,9 @@ const userSchema = new mongoose.Schema({
 });
 
 /*
-    Metoda instancyjna tworząca token JWT zawierający _id użytkownika.
-    - Token podpisywany jest kluczem z process.env.JWTPRIVATEKEY
-    - Token ważny przez 7 dni (expiresIn)
+    Generate token method using user's id:
+    - Token is signed with key from process.env.JWTPRIVATEKEY
+    - Token is valid for 7 days (expiresIn)
 */
 
 userSchema.methods.generateAuthToken = function () {
@@ -48,10 +47,10 @@ userSchema.methods.generateAuthToken = function () {
 const User = mongoose.model("User", userSchema);
 
 /*
-    Walidacja wejścia (przy rejestracji / edycji użytkownika) przy użyciu Joi.
-    - passwordComplexity: konfiguracja minimalnych wymagań dla haseł
-    - email: tylko prawidłowy adres email
-    - phonenumber: dopuszczamy polski format 9 cyfr (regex /^\d{9}$/)
+    Validate user data (when registering and updating) using Joi.
+    - passwordComplexity
+    - email
+    - phonenumber
 */
 const validate = (data) => {
   const complexityOptions = {
@@ -80,6 +79,7 @@ const validate = (data) => {
       .required()
       .label("Password"),
     profilePicture: Joi.string().uri().optional().label("Profile Picture"),
+    role: Joi.string().valid("user", "admin").optional().label("Role"),
   });
   return schema.validate(data);
 };

@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const Joi = require("joi");
 require("dotenv").config();
 
-// POST /signup * Rejestracja nowego użytkownika (walidacja danych za pomocą express-validatora, sprawdzenie unikalności)
+// POST /signup * New user register (validation using express-validator, check for duplicates)
 router.post(
   "/signup",
   [
@@ -14,6 +14,10 @@ router.post(
     body("email").notEmpty().withMessage("Adres email jest wymagany"),
     body("phonenumber").notEmpty().withMessage("Numer telefonu jest wymagany"),
     body("password").notEmpty().withMessage("Hasło jest wymagane"),
+    body("role")
+      .optional()
+      .isIn(["user", "admin"])
+      .withMessage("Nieprawidłowa rola"),
   ],
   async (req, res) => {
     try {
@@ -35,6 +39,16 @@ router.post(
           .status(409)
           .send({ message: "User with given username already exists!" });
       const { fullName, userName, email, phonenumber, password } = req.body;
+      let role = req.body.role && req.body.role === "admin" ? "admin" : "user";
+      if (role === "admin") {
+        const adminKey =
+          req.headers["x-admin-key"] || req.body.adminKey || null;
+        if (!adminKey || adminKey !== process.env.ADMIN_CREATION_KEY) {
+          return res
+            .status(403)
+            .json({ message: "Nieprawidłowy klucz tworzenia administratora" });
+        }
+      }
       const salt = await bcrypt.genSalt(Number(process.env.SALT));
       const passwordHash = await bcrypt.hash(password, salt);
       const user = new User({
@@ -43,6 +57,7 @@ router.post(
         email,
         phonenumber,
         password: passwordHash,
+        role,
       });
       await user.save();
       res.status(201).send({ message: "User created succesfully" });
@@ -54,7 +69,7 @@ router.post(
   }
 );
 
-// POST /login * Uwierzytelnienie użytkownika (sprawdzenie poprawności danych, wygenerowanie tokenu)
+// POST /login * User authorization (validate data, generate token)
 router.post("/login", async (req, res) => {
   try {
     const { error } = validateLogin(req.body);

@@ -7,7 +7,7 @@ const Equipment = require("../models/Equipment");
 const tokenVerification = require("../middleware/tokenVerification.js");
 const adminVerification = require("../middleware/adminVerification.js");
 
-// POST / * Dodanie nowej rezerwacji (weryfikacja użytkownika, walidacja danych)
+// POST / * Add new reservation (user validation, data validation)
 router.post(
   "/",
   [
@@ -71,7 +71,7 @@ router.post(
   }
 );
 
-// GET / * Pobranie informacji o wybranej rezerwacji (weryfikacja użytkownika)
+// GET / * Get list of reservations for current user
 router.get("/", tokenVerification, async (req, res) => {
   try {
     const reservations = await Reservation.find({ user: req.user._id })
@@ -115,7 +115,7 @@ router.get("/", tokenVerification, async (req, res) => {
   }
 });
 
-// GET /equipment/:id * Pobranie sprzętu dla rezerwacji o wybranym id
+// GET /equipment/:id * Get info about equipment for chosen reservation
 router.get("/equipment/:id", tokenVerification, async (req, res) => {
   try {
     const reservations = await Reservation.find({
@@ -128,7 +128,7 @@ router.get("/equipment/:id", tokenVerification, async (req, res) => {
   }
 });
 
-// GET /admin * Pobranie listy rezerwacji dla admina
+// GET /admin * Get list of all reservations (admin only)
 router.get("/admin", tokenVerification, async (req, res) => {
   try {
     const reservations = await Reservation.find()
@@ -163,7 +163,7 @@ router.get("/admin", tokenVerification, async (req, res) => {
   }
 });
 
-// DELETE /:id * Usunięcie rezerwacji o wybranym id (weryfikacja użytkownika, sprawdzenie istnienia sprzętu oraz rezerwacji)
+// DELETE /:id * Delete reservation with chosen id (data and user validation)
 router.delete("/:id", tokenVerification, async (req, res) => {
   try {
     const reservationTemp = await Reservation.findById({
@@ -192,7 +192,7 @@ router.delete("/:id", tokenVerification, async (req, res) => {
   }
 });
 
-// DELETE /:id/admin * Usunięcie rezerwacji o wybranym id (tylko dla admina)
+// DELETE /:id/admin * Delete chosen reservation (admin only)
 router.delete("/:id/admin", adminVerification, async (req, res) => {
   try {
     const deleted = await Reservation.findByIdAndDelete(req.params.id);
@@ -210,7 +210,7 @@ router.delete("/:id/admin", adminVerification, async (req, res) => {
   }
 });
 
-// PUT /:id * Zmiana rezerwacji o wybranym id (weryfikacja użytkownika)
+// PUT /:id * Update reservation with chosen id (user verification)
 router.put("/:id", tokenVerification, async (req, res) => {
   try {
     const reservation = await Reservation.findOneAndUpdate(

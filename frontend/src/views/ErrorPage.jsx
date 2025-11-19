@@ -4,9 +4,9 @@ import Footer from "../components/Universal/Footer";
 import Navbar from "../components/Universal/Navbar";
 
 /*
-    Strona błędu
-    Pokazywana przy błędnym adresie lub innym błędzie
-    Umożliwia powrót do strony głównej
+    Error page
+    Shown in case of a wrong address
+    User can return to home page
 */
 
 export default function ErrorPage() {
