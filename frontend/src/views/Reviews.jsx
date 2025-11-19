@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Navbar from "../components/Universal/Navbar";
 import Footer from "../components/Universal/Footer";
 import AddReview from "../components/Review/AddReview";
+import ReviewsTable from "../components/Review/ReviewsTable";
 
 /*
     Reviews page
@@ -14,6 +15,7 @@ export default function Reviews() {
   return (
     <div className=" min-h-screen bg-gray-100 dark:bg-[#242424] text-black transition-colors duration-300">
       <Navbar />
+      <ReviewsTable refresh={refresh} />
       <AddReview refresh={refresh} setRefresh={setRefresh} /> 
       <Footer />
     </div>
