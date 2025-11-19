@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import { useAuth } from "../context/AuthContext";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import ChangeAvatarForm from "../components/Profile/ChangeAvatarForm";
 
 const MySwal = withReactContent(Swal);
 
@@ -74,16 +75,16 @@ export default function Profile() {
         <h1 className="text-3xl text-black dark:text-white font-bold mb-6">
           Mój profil
         </h1>
-        <div className="flex flex-wrap w-full gap-5 text-black dark:text-white bg-white dark:bg-green-950 items-center space-x-4 mb-8 p-5 shadow-2xl rounded-2xl">
-          <div className="flex flex-col pb-96 align-top">
+        <div className="flex flex-wrap w-full gap-8 text-black dark:text-white bg-white dark:bg-green-950 items-center mb-8 p-6 shadow-2xl rounded-2xl">
+          <div className="flex flex-col items-center justify-start">
             <img
               src={profile.profilePicture}
               alt="Avatar"
-              className="w-24 h-24 rounded-full object-cover"
+              className="w-32 h-32 rounded-full object-cover shadow-lg"
             />
           </div>
-          <div className="flex flex-col flex-wrap w-10/12 bg-slate-100 text-black rounded-2xl p-4">
-            <table className="w-full">
+          <div className="flex flex-col flex-1 bg-slate-100 text-black rounded-2xl p-6">
+            <table className="w-full mb-4">
               <tbody>
                 <tr>
                   <td className="font-medium">Imię i nazwisko: </td>
@@ -101,6 +102,8 @@ export default function Profile() {
                 </tr>
               </tbody>
             </table>
+            {/* Change profile picture form */}
+            <ChangeAvatarForm onUpdated={() => setRefresh(!refresh)} />
             <button
               className="w-full bg-red-600 hover:bg-red-700 hover:cursor-pointer text-white font-bold py-2 px-4 rounded-lg transition duration-200"
               onClick={handleDelete}
