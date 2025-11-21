@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
-const mongoose = require("../config/db.js");
 const Reservation = require("../models/Reservation");
 const Equipment = require("../models/Equipment");
 const tokenVerification = require("../middleware/tokenVerification.js");
