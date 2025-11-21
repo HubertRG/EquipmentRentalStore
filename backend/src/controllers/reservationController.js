@@ -166,19 +166,9 @@ router.get("/admin", tokenVerification, async (req, res) => {
 // DELETE /:id * Delete reservation with chosen id (data and user validation)
 router.delete("/:id", tokenVerification, async (req, res) => {
   try {
-    const reservationTemp = await Reservation.findById({
-      _id: req.params.id,
-    });
-
-    const equipment = await Equipment.findById({
-      _id: reservationTemp.equipment,
-    });
-
-    if (!equipment) {
-      return res.status(404).json({ message: "Sprzęt nie istnieje" });
-    }
     const reservation = await Reservation.findOneAndDelete({
       _id: req.params.id,
+      user: req.user._id,
     });
 
     if (!reservation) {
@@ -187,7 +177,7 @@ router.delete("/:id", tokenVerification, async (req, res) => {
     console.log("Usunięto rezerwację");
     res.json({ message: "Rezerwacja usunięta" });
   } catch (err) {
-    res.status(500).json({ message: "Błąd serwera" });
+    res.status(500).json({ message: "Błąd serwera" }); 
     console.log(err);
   }
 });
