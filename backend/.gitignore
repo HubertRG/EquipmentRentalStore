@@ -9,7 +9,6 @@ yarn-error.log*
 .env
 /config/keys.js
 *.local
-/uploads
 
 # Build output
 /dist
